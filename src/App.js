@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Header from './component/Header/Header';
+import { Route, Routes } from 'react-router-dom';
+import Home from './component/Home/Home';
+import Login from './component/Login/Login';
+import Register from './component/Register/Register';
+import { ToastContainer } from 'react-toastify';
+import RequireAuth from './component/RequireAuth/RequireAuth';
+import Inventory from './component/Inventory/Inventory';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Home></Home>}> </Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/inventory' element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
+      </Routes>
+      <ToastContainer/>
+
     </div>
   );
 }
