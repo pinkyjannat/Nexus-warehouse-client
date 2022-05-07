@@ -1,21 +1,84 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import useProductId from '../../hooks/useProductId';
 
 const Inventory = () => {
     const{productId}=useParams();
-    const[useProduct]=useProductId(productId)
-    return (
-        <div className='products mb-3 bg-success pb-5 rounded-3 text-center text-white'>
-        <img className='w-100' style={{width:'40px'}} src={useProduct.picture} alt="" />
-        <h4 className='mt-5'> {useProduct.name}</h4>
-        <p>Supplier: {useProduct.supplierName}</p>
-        <h5>price: ${useProduct.price}</h5>
-        <p>Quantity: {useProduct.quantity}</p>
-        <p className='px-3 py-2'>{useProduct.description}</p>
+    const[updateProduct,setUpdateProduct]=useState([true]);
 
-    </div>
-    );
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/update/${productId}`)
+        .then(res=>res.json())
+        .then(data=>setUpdateProduct(data))
+    },[updateProduct])
+    
+
+//     const handleDelivery = event =>{
+//         const newQuantity = useProduct?.quantity -  1;
+//         const sold = useProduct?.sold + 1;
+//         const user = {quantity, sold};
+//     }
+
+//     // update qauntity
+//       fetch(`http://localhost:5000/quantity/${productId}`,{
+//           method: 'PUT',
+//           headers:{
+//               'content-type' : 'application/json',
+//           },
+//           body: JSON.stringify(user),
+//       })
+//       .then(response => response.json())
+//       .then(data =>{
+
+//       })
+//       .catch((error)=>{
+//           console.error('Error:', error)
+//       })
+//    }
+//     // send data to server to update the restock quantity
+//     const handleIncreaseQuantity = event =>{
+//         event.preventDefault();
+//         const quantity =parseInt(event.target.number.value) + parseInt(updateProduct.quantity) ;
+//         // console.log(restock);
+//         const user = {quantity};
+    
+//         fetch(`http://localhost:5000/restock/${productId}`,{
+//             method: 'PUT',
+//             headers:{
+//                 'content-type' : 'application/json',
+//             },
+//             body: JSON.stringify(user),
+//         })
+//         .then(response => response.json())
+//         .then(data =>{
+    
+//         })
+//         .catch((error)=>{
+//             console.error('Error:', error)
+//         })
+    
+//        }
+
+
+    // return (
+    //     <div className='text-center'>
+    //        <div><img  style={{width:'200px'}} src={useProduct?.picture} alt="" /></div>
+    //         <h4 className='mt-5'> {useProduct?.name}</h4>
+    //         <p>Supplier: {useProduct?.supplierName}</p>
+    //         <p>sold: {useProduct?.sold}</p>
+    //         <h5>price: ${useProduct?.price}</h5> <p className='p-2'>{useProduct?.description}</p>
+    //         <p>Quantity: {useProduct?.quantity}</p>
+    //         <button onClick={()=>handleDelivery()}>Delivery</button>
+    //         <form onSubmit={handleIncreaseQuantity}>
+    //             <input type="number" name="number" placeholder='add more' required />
+    //             <br />
+               
+    //             <input type="submit" value="Restock" />
+    //         </form>
+    // <Link to='/manage'> <button> Manage Inventories</button></Link>
+    //     </div>
+    // );
 };
 
 export default Inventory;

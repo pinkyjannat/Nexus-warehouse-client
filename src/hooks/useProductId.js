@@ -4,7 +4,7 @@ const useProductId = (productId) => {
     const[useProduct,setUseProduct]=useState();
     useEffect(()=>{
 
-        const url = `http://localhost:5000/products/${productId}`
+        const url = `http://localhost:5000/update/${productId}`
         fetch(url)
             .then(res => res.json())
             .then(data => setUseProduct(data))
