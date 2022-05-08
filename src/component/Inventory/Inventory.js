@@ -36,11 +36,11 @@ const Inventory = () => {
     
 
    }
-   // send data to server to update the restock quantity
+   //  update the restock quantity
    const handleIncreaseQuantity = event =>{
     event.preventDefault();
     const quantity =parseInt(event.target.number.value) + parseInt(updateProduct.quantity) ;
-    // console.log(restock);
+   
     const user = {quantity};
 
     fetch(`http://localhost:5000/restock/${productId}`,{
