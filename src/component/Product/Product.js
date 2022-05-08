@@ -16,7 +16,7 @@ const Product = ({ product }) => {
             <p className='text-center'>Supplier: {supplierName}</p>
             <h5 className='text-center'>price: ${price}</h5>
             <p className="text-center">Quantity: {quantity}</p>
-            <button onClick={()=>navigateToInventory(_id)} className='btn btn-secondary rounded-pill'>Details</button>
+            <button onClick={()=>navigateToInventory(_id)} className='btn btn-secondary rounded-pill d-block mx-auto'>Details</button>
             <p className='p-3 m-2 text-center'>{description}</p>
 
         </div>

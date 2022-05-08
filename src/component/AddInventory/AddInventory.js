@@ -52,7 +52,7 @@ const AddInventory = () => {
                 <br />
                 <input className='w-100 mb-2 rounded-pill fs-4 text-center' type="text" name='picture' placeholder='image URL' required />
                 <br />
-                <input className='btn btn-primary rounded-pill fs-4 text-center' type="submit" value="Place Order" />
+                <input className='btn btn-primary rounded-pill fs-4 text-center' type="submit" value="Add Item" />
             </form>
         </div>
     );

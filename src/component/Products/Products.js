@@ -15,10 +15,10 @@ fetch('http://localhost:5000/products')
     return (
       
         <div className='container'>
-            <h1 className='text-secondary text-center'> Our Current Stocks</h1>
+            <h1 className='text-secondary text-center my-4 py-4'> Our Current Stocks</h1>
             
               <div  className='card'> {products.slice(0, 6).map(product =><Product key={product._id} product={product}></Product>)}</div>
-              <Link to='/manage'> <button className='btn btn-secondary mt-4 rounded-pill'> Manage Inventories</button></Link>
+              <Link className='text-decoration-none'to='/manage'> <button className='btn btn-secondary d-block mx-auto mt-4 rounded-pill'> Manage Inventories</button></Link>
           
         </div>
     );

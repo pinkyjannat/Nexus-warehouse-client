@@ -2,22 +2,33 @@ import { async } from '@firebase/util';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import login from '../../images/login/login.webp';
+import useToken from '../../hooks/UseToken';
 
 const Login = () => {
     const emailRef = useRef('');
+    const passwordRef = useRef('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    let loginError;
+
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
-    let loginError;
+    const [token] = useToken(user);
 
     if (loading || sending) {
         return <Loading></Loading>
+    }
+    if(token){
+        navigate(from, { replace: true });
     }
     if (error) {
 
@@ -28,14 +39,15 @@ const Login = () => {
 
     }
 
-
+console.log(user);
     const handleSubmit = async event => {
         event.preventDefault();
-        const email = event.target.email.value;
-        console.log(email);
-        const password = event.target.password.value;
-        await signInWithEmailAndPassword(email, password);
-        console.log(user);
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        
+       await signInWithEmailAndPassword(email, password);
+        
+        
 
     }
     const handleReset = async () => {
@@ -63,7 +75,7 @@ const Login = () => {
 
                 <Form.Group className="mb-4 pb-2 w-50 mx-auto" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name='password' placeholder="Password" required />
+                    <Form.Control ref={passwordRef} type="password" name='password' placeholder="Password" required />
                 </Form.Group>
 
                 <Button variant="primary w-50 mx-auto d-block" className='' type="submit">
