@@ -27,7 +27,7 @@ const AddInventory = () => {
             supplierName: event.target.supplierName.value,
             description: event.target.description.value,
         }
-        axios.post('http://localhost:5000/products', order)
+        axios.post('http://localhost:5000/order', order)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {

@@ -36,7 +36,6 @@ const Login = () => {
             <div className='text-danger mt-2 text-center'>
                 <p>Error: {error.message}</p>
             </div>
-
     }
 
 console.log(user);

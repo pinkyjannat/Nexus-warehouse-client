@@ -40,9 +40,6 @@ const MyItems = () => {
     }
 
 
-    useEffect(() => {
-        const getOrders = async () => {
-            const email = user?.email
             const url = `http://localhost:5000/order?email=${email}`
             try {
                 const { data } = await axiosPrivate.get(url);
@@ -74,8 +71,7 @@ const MyItems = () => {
                 <h5>{product.supplierName}</h5>
                 <h5>Price: ${product.price}</h5>
                 <p>{product.description}</p>
-                {/* <button  onClick={()=>handleUserDelete(product._id,setRefresh(!Refresh))}>delete</button> */}
-                {/* <Button  variant="danger " onClick={() => handleUserDelete(product._id)} >Delete Item</Button> */}
+                <button className='btn btn-danger px-4'  onClick={()=>handleUserDelete(product._id , window.location.reload(false))}>Delete Item</button>
                 </div>
            )
         }
