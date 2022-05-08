@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import login from '../../images/login/login.webp';
 
 const Register = () => {
     const [
@@ -33,8 +34,11 @@ const Register = () => {
     }
 
     return (
-        <div className=' bg-dark py-5 w-50 mx-auto text-white my-5 rounded' style={{ height: '700px' }}>
-            <h2 className='mx-auto text-center text-bold mt-2 mb-5'>Create a new account here</h2>
+      <div className='container'>
+          <div className='row'>
+              <div className='col-lg-8'>
+              <div className=' bg-dark p-2 w-30 mx-auto text-white my-2' style={{ height: '550px' }}>
+            <h2 className='mx-auto text-center text-bold mt-2 mb-4'>Create Accounting</h2>
             <Form onSubmit={handleSubmit} >
                 <Form.Group className="mb-3 w-50 mx-auto" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
@@ -50,14 +54,20 @@ const Register = () => {
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="info w-50 mx-auto d-block" type="submit">
+                <Button variant="primary w-50 mx-auto d-block" type="submit">
                     <small className='fs-5 text-bold p-2 '>Register</small>
                 </Button>
-                <p className='text-center mt-3'>Already a member? <Link className='text-info text-decoration-none' to='/login'> Login here</Link></p>
+                <p className='text-center mt-3'>Already a member? <Link className='text-primary text-decoration-none' to='/login'> Login here</Link></p>
                 {registerError}
             </Form>
             <SocialLogin></SocialLogin>
         </div>
+              </div>
+              <div className="col-lg-4">
+              <img  className=" w-100" src={login} alt="" />
+              </div>
+          </div>
+      </div>
     );
 };
 

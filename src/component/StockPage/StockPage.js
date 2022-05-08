@@ -26,7 +26,7 @@ const StockPage = () => {
      We stock our products from different parts of the world.We believe using modern technology changes our lives. once we get a better option to upgrade our products, we never delay!
     </Accordion.Body>
   </Accordion.Item>
-  <Accordion.Item eventKey="1">
+  <Accordion.Item eventKey="0">
     <Accordion.Header >why we never in believe in extra stock?</Accordion.Header>
     <Accordion.Body>
      We always try to upgrade our product when one item is available in market.from the begining we are trying to stock limited product as per their popularity in market.when we realize this item is selling so first ,we dont delay to restock that and when we find out one product is loosing its market popularity we stopped restocking that! it is as simple as it is!

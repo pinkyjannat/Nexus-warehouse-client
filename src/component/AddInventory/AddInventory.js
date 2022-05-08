@@ -1,38 +1,59 @@
+import axios from 'axios';
 import React from 'react';
-import { useForm } from 'react-hook-form';
-
+import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useForm } from "react-hook-form";
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+// import useUpdateProduct from '../../../hooks/useUpdateProduct';
 
 
 const AddInventory = () => {
-    const { register, handleSubmit } = useForm();
 
-    const onSubmit = data => {
-        console.log(data);
-        const url = `http://localhost:5000/products`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
+    const { productId } = useParams();
+    // const [updateProduct] = useUpdateProduct(productId);
+    const [user] = useAuthState(auth);
+
+    const handlePlaceOrder = event => {
+        event.preventDefault();
+        const order = {
+            email: user?.email,
+            // name:user?.displayName,
+            productId: productId,
+            picture: event.target.picture.value,
+            name: event.target.name.value,
+            price: event.target.price.value,
+            quantity: event.target.quantity.value,
+            supplierName: event.target.supplierName.value,
+            description: event.target.description.value,
+        }
+        axios.post('http://localhost:5000/products', order)
+            .then(response => {
+                const { data } = response;
+                if (data.insertedId) {
+                    toast('Your order is booked!!!');
+                    event.target.reset();
+                }
             })
-    };
+    }
+
     return (
-        <div className='container bg-secondary py-5 w-50 mx-auto text-white my-5 rounded' style={{ height: '400px' }}>
-
-            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-                <h2 className='text-center'>Add Your Product</h2>
-                <input className='mb-5 mx-4' placeholder='Name' {...register("name", { required: true, maxLength: 20 })} />
-                <textarea className='mb-4 mx-5' placeholder='Description' {...register("description")} />
-                <input className='mb-3 mx-5' placeholder='Price' type="number" {...register("price")} />
-                <input className='mb-3 mx-5' placeholder='Photo URL' type="text" {...register("picture")} />
-                <input className='mt-3 mx-5' type="submit" value="Add Service" />
+        <div className='container bg-secondary py-4 w-50 mx-auto text-white my-2 rounded-3' style={{ height: '500px' }}>
+          <h3 className='text-center text-dark'>Add Items</h3>
+            <form onSubmit={handlePlaceOrder} >
+                <br />
+                <input className='w-100 mb-2 fs-4 rounded-pill text-center' type="email" name='email' value={user?.email} placeholder='email' readOnly />
+                <br />
+                <input className='w-100 mb-2 fs-4 rounded-pill text-center' type="text" name='name' placeholder='Products Name' required />
+                <input className='w-100 mb-2 rounded-pill fs-4 text-center' type="number" name='price' placeholder='price' required />
+                <input className='w-100 mb-2 rounded-pill fs-4 text-center' type="text" name='supplierName' placeholder='Supplier Name' required />
+                <input className='w-100 mb-2 rounded-pill fs-4 text-center' type="number" name='quantity' placeholder='Quantity' required />
+                <input className='w-100 mb-2 rounded-pill fs-4 text-center' type="text" name='description' placeholder='Product Description' required />
+                <br />
+                <input className='w-100 mb-2 rounded-pill fs-4 text-center' type="text" name='picture' placeholder='image URL' required />
+                <br />
+                <input className='btn btn-primary rounded-pill fs-4 text-center' type="submit" value="Place Order" />
             </form>
-
         </div>
     );
 };
