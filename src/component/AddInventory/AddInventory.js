@@ -27,7 +27,7 @@ const AddInventory = () => {
             supplierName: event.target.supplierName.value,
             description: event.target.description.value,
         }
-        axios.post('http://localhost:5000/order', order)
+        axios.post('https://stark-island-35591.herokuapp.com/order', order)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {

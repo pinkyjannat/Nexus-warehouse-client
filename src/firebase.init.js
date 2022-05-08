@@ -12,6 +12,7 @@ const firebaseConfig = {
   storageBucket: "nexus-f0563.appspot.com",
   messagingSenderId: "555356142133",
   appId: "1:555356142133:web:475d15eb9a741ad2e80f7c"
+
 };
 
 

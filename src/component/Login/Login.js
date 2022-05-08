@@ -37,8 +37,7 @@ const Login = () => {
                 <p>Error: {error.message}</p>
             </div>
     }
-
-console.log(user);
+    console.log(user);
     const handleSubmit = async event => {
         event.preventDefault();
         const email = emailRef.current.value;

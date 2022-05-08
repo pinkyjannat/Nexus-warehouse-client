@@ -15,16 +15,16 @@ const MyItems = () => {
 
    
     useEffect( () =>{
-        fetch('http://localhost:5000/order')
+        fetch('https://stark-island-35591.herokuapp.com/order')
         .then(res => res.json())
         .then(data => setUsers(data));
-    }, [users]);
+    }, [user]);
 
     const handleUserDelete = id =>{
         const proceed = window.confirm('Are you sure you want to delete?');
         if(proceed){
             console.log('deleting user with id, ', id);
-            const url = `http://localhost:5000/order/${id}`;
+            const url = `https://stark-island-35591.herokuapp.com/order/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -42,7 +42,7 @@ const MyItems = () => {
     useEffect(() => {
         const getOrders = async () => {
             const email = user?.email
-            const url = `http://localhost:5000/order?email=${email}`
+            const url = `https://stark-island-35591.herokuapp.com/order?email=${email}`
             try {
                 const { data } = await axiosPrivate.get(url);
                 setProducts(data)
@@ -63,8 +63,8 @@ const MyItems = () => {
    
     return (
         <div>
-            <h2>My item page</h2>
-            <h2>your order: {products.length}</h2>
+          
+            <h2 className='text-center'>your order: {products.length}</h2>
             {
             products.map(product =>
                 <div key={product._id} className='products mb-3 pb-5 rounded-3 text-center shadow-sm'>
@@ -73,7 +73,7 @@ const MyItems = () => {
                 <h5>{product.supplierName}</h5>
                 <h5>Price: ${product.price}</h5>
                 <p>{product.description}</p>
-                <button className='btn btn-danger px-4'  onClick={()=>handleUserDelete(product._id , window.location.reload(false))}>Delete Item</button>
+                <button className='btn btn-danger px-4' onClick={()=>handleUserDelete(product._id , window.location.reload(false))}>Delete Item</button>
                 </div>
            )
         }

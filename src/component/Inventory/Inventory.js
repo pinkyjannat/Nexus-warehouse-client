@@ -7,7 +7,7 @@ const Inventory = () => {
     const[updateProduct,setUpdateProduct]=useState([true]);
     
    useEffect(()=>{
-    fetch(`http://localhost:5000/update/${productId}`)
+    fetch(`https://stark-island-35591.herokuapp.com/update/${productId}`)
     .then(res=>res.json())
     .then(data=>setUpdateProduct(data))
 },[updateProduct])
@@ -18,7 +18,7 @@ const Inventory = () => {
       const user = {quantity, sold};
 
       //send data in server for update qauntity
-      fetch(`http://localhost:5000/quantity/${productId}`,{
+      fetch(`https://stark-island-35591.herokuapp.com/${productId}`,{
           method: 'PUT',
           headers:{
               'content-type' : 'application/json',
@@ -42,7 +42,7 @@ const Inventory = () => {
    
     const user = {quantity};
 
-    fetch(`http://localhost:5000/restock/${productId}`,{
+    fetch(`https://stark-island-35591.herokuapp.com/restock/${productId}`,{
         method: 'PUT',
         headers:{
             'content-type' : 'application/json',

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './ManageINventory.css'
+import './ManageINventory.css';
+import MyItems from '../MyItems/MyItems'; 
 
 const ManageInventory = () => {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://stark-island-35591.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
 
@@ -16,7 +17,7 @@ const ManageInventory = () => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
             console.log('deleting user with id, ', id);
-            const url = `http://localhost:5000/update/${id}`;
+            const url = `foyezfoyez019@gmail.com/update/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -46,6 +47,7 @@ const ManageInventory = () => {
                     </div>)
                 }
             </div>
+            <MyItems></MyItems>
             <Link className='text-decoration-none' to='/addInventory'> <Button className="mx-6 fs-5 w-50 mb-5 d-block mx-auto " variant="secondary">Add new item</Button></Link>
         </div>
     );
