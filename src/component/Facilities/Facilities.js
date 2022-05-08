@@ -8,26 +8,26 @@ import {FaWarehouse } from 'react-icons/fa';
 const Facilities = () => {
     return (
         <div className='container'>
-            <p className='text-center fs-3'><span className="text-secondary fs-1">Advanced features</span> made simple</p>
+            <p className='text-center fs-3'><span className="text-primary fs-1">Advanced features</span> made simple</p>
             <p className='text-center fs-3'>Use cutting-edge automation and advanced routes to manage any warehouse</p>
             <hr />
-            <CardGroup>
+            <CardGroup >
                 <Card className='border-0 '>
-                    <Card.Body className='text-center'>
+                    <Card.Body className='text-center ms-5'>
                     <p><MdOutlineLocalShipping  className='me-3' size={70}/>< AiOutlineArrowRight  className='me-3' size={40}/><FaPeopleArrows size={70}/></p>
-                    <h3 className='text-secondary'>Drop Shipping</h3>
+                    <h3 className='text-primary'>Drop Shipping</h3>
                     </Card.Body>
                 </Card>
                 <Card className='border-0 '>
-                    <Card.Body className='text-center'>
+                    <Card.Body className='text-center ms-5'>
                     <p><MdOutlineLocalShipping  className='me-3 ' size={70}/>< AiOutlineArrowRight  className='me-3' size={40}/><MdOutlineLocalShipping size={70}/></p>
-                    <h3 className='text-secondary'>Cross Docking</h3>
+                    <h3 className='text-primary'>Cross Docking</h3>
                     </Card.Body>
                 </Card>
                 <Card className='border-0'>
-                    <Card.Body className='text-center'>
+                    <Card.Body className='text-center ms-5'>
                     <p><FaWarehouse  className='me-3' size={70}/>< AiOutlineArrowRight  className='me-3' size={40}/><FaWarehouse size={70}/></p>
-                    <h3 className='text-secondary'>Multi Warehouse </h3>
+                    <h3 className='text-primary'>Multi Warehouse </h3>
                     </Card.Body> 
                 </Card>
             </CardGroup>
