@@ -9,4 +9,6 @@ Link: https://nexus-f0563.web.app/
 * used axios for data fetch.
 * firebase for deploy client side .
 * used mongodb to fetch data from server side.
+* used toastify
+* used react icon and custom hook .
 
