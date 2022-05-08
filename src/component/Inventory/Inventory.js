@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
 
@@ -61,22 +60,23 @@ const Inventory = () => {
    }
 
     return (
-        <Card className='text-center'>
+        <div className='text-center'>
            <div><img  style={{width:'200px'}} src={updateProduct?.picture} alt="" /></div>
             <h4 className='mt-5'> {updateProduct?.name}</h4>
             <p>Supplier: {updateProduct?.supplierName}</p>
             <h5>price: ${updateProduct?.price}</h5> <p className='px-3 py-2'>{updateProduct?.description}</p>
             <p>Quantity: {updateProduct?.quantity}</p>
             <p>sold: {updateProduct?.sold}</p>
-            <button onClick={()=>handleDelivery()}>Delivery</button>
+            <div className='d-flex justify-content-center'><p className='px-4 mx-3'> <button className='btn btn-info px-3' onClick={()=>handleDelivery()}>Delivery</button></p>
             <form onSubmit={handleIncreaseQuantity}>
                 <input type="number" name="number" placeholder='add more' required />
                 <br />
                
-                <input type="submit" value="Restock" />
+                <input type="submit" className='btn btn-primary mt-2' value="Restock" />
             </form>
             <Link to='/manage'> <button className='text-decoration-none'> Manage Inventories</button></Link>
-        </Card>
+            </div>
+        </div>
     );
 }
 

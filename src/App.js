@@ -12,6 +12,8 @@ import Products from './component/Products/Products';
 import ManageInventory from './component/ManageInventory/ManageInventory';
 import AddInventory from './component/AddInventory/AddInventory';
 import MyItems from'./component/MyItems/MyItems';
+import Blogs from './component/Blogs/Blogs';
+import NotFound from './component/NotFound/NotFound';
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/products' element={<Products></Products>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/inventory/:productId' element={
           <RequireAuth>
             <Inventory></Inventory>
@@ -43,6 +46,7 @@ function App() {
             <AddInventory></AddInventory>
           </RequireAuth>
         }></Route>
+         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer/>
 

@@ -38,8 +38,8 @@ const ManageInventory = () => {
                     products.map(product => <div key={product._id}>
                         <img style={{ width: '200px' }} src={product.picture} alt="" />
                         <h3>{product.name}</h3>
-                        <h5>{product.supplierName}</h5>
-                        <p>{product.price}</p>
+                        <h5>Supplier Name:{product.supplierName}</h5>
+                        <p>Price:${product.price}</p>
                         <p>{product.description}</p>
                         <button className="mx-6 fs-5 w-50 mb-5 d-block mx-auto rounded-pill border border-5" variant="secondary"  onClick={() => handleUserDelete(product._id)} >Delete</button>
 

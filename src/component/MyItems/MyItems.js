@@ -18,7 +18,7 @@ const MyItems = () => {
         fetch('http://localhost:5000/order')
         .then(res => res.json())
         .then(data => setUsers(data));
-    }, []);
+    }, [users]);
 
     const handleUserDelete = id =>{
         const proceed = window.confirm('Are you sure you want to delete?');
@@ -39,7 +39,9 @@ const MyItems = () => {
         }
     }
 
-
+    useEffect(() => {
+        const getOrders = async () => {
+            const email = user?.email
             const url = `http://localhost:5000/order?email=${email}`
             try {
                 const { data } = await axiosPrivate.get(url);
@@ -57,7 +59,7 @@ const MyItems = () => {
         getOrders()
 
     }, [user])
-   
+    
    
     return (
         <div>
