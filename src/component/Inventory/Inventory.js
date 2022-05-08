@@ -75,7 +75,7 @@ const Inventory = () => {
                
                 <input type="submit" value="Restock" />
             </form>
-            <Link to='/manage'> <button> Manage Inventories</button></Link>
+            <Link to='/manage'> <button className=''> Manage Inventories</button></Link>
            
             
         </Card>

@@ -9,7 +9,7 @@ const Facilities = () => {
     return (
         <div className='container'>
             <p className='text-center fs-3'><span className="text-secondary fs-1">Advanced features</span> made simple</p>
-            <p className='text-center fs-4'>Use cutting-edge automation and advanced routes to manage any warehouse</p>
+            <p className='text-center fs-3'>Use cutting-edge automation and advanced routes to manage any warehouse</p>
             <hr />
             <CardGroup>
                 <Card className='border-0 '>
@@ -18,9 +18,9 @@ const Facilities = () => {
                     <h3 className='text-secondary'>Drop Shipping</h3>
                     </Card.Body>
                 </Card>
-                <Card className='border-0'>
+                <Card className='border-0 '>
                     <Card.Body className='text-center'>
-                    <p><MdOutlineLocalShipping  className='me-3' size={70}/>< AiOutlineArrowRight  className='me-3' size={40}/><MdOutlineLocalShipping size={70}/></p>
+                    <p><MdOutlineLocalShipping  className='me-3 ' size={70}/>< AiOutlineArrowRight  className='me-3' size={40}/><MdOutlineLocalShipping size={70}/></p>
                     <h3 className='text-secondary'>Cross Docking</h3>
                     </Card.Body>
                 </Card>
